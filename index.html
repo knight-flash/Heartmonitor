@@ -56,15 +56,19 @@
         <div class="panel-footer"></div>
     </div>
     <div class="center_main">
-        <div class="center_top" style="width: 614px; height: 380px; position: relative; background-color: #0b1c2c; overflow: hidden;">
-                
-                <div id="video-container" style="width: 100%; height: 100%;">
-                    <video id="heart-video" width="100%" height="100%"  muted autoplay style="object-fit: cover;">
-                        
-                        <source src="./static/media/heart_video.mp4" type="video/mp4">
-                    </video>
-                </div>
-                <div id="image-container" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: none; background-color: #0b1c2c; background-image: url('./static/media/heart_image.png'); background-size: contain; background-repeat: no-repeat; background-position: center;"></div>
+        <div class="center_top" style="width: 814px; height: 270px; position: relative; background-color: #0b1c2c; overflow: hidden;">
+            
+            <div id="video-container-1" style="width: 100%; height: 100%;">
+                <video id="heart-video-1" width="100%" height="100%" muted autoplay style="object-fit: cover;">
+                    <source src="./static/media/heart_video.mp4" type="video/mp4">
+                </video>
+            </div>
+
+            <div id="video-container-2" style="width: 100%; height: 100%; display: none; position: absolute; top: 0; left: 0;">
+                <video id="heart-video-2" width="100%" height="100%" muted loop autoplay style="object-fit: cover;">
+                    <source src="./static/media/heart_video_loop.mp4" type="video/mp4">
+                </video>
+            </div>
 
         </div>
         <div class="center_bottom">
@@ -146,17 +150,27 @@
 <script src="./static/echarts.min.js"></script>
 <script src="./static/index2.js"></script>
 <script>
-            const videoContainer = document.getElementById('video-container');
-            const heartVideo = document.getElementById('heart-video');
-            const imageContainer = document.getElementById('image-container');
+    // --- 视频切换逻辑 ---
+    // 1. 获取所有相关的视频容器和视频元素
+    const videoContainer1 = document.getElementById('video-container-1');
+    const video1 = document.getElementById('heart-video-1');
+    const videoContainer2 = document.getElementById('video-container-2');
+    const video2 = document.getElementById('heart-video-2');
 
-            // 检查 imageContainer 是否存在，避免因HTML不完整而出错
-            if (imageContainer) {
-                heartVideo.addEventListener('ended', () => {
-                    videoContainer.style.display = 'none'; 
-                    imageContainer.style.display = 'block'; 
-                });
-            }
+    // 2. 确保所有元素都已找到，避免出错
+    if (video1 && videoContainer1 && video2 && videoContainer2) {
+        
+        // 3. 为第一个视频添加 'ended' (播放结束) 事件监听器
+        video1.addEventListener('ended', () => {
+            // 隐藏第一个视频的容器
+            videoContainer1.style.display = 'none';
+            // 显示第二个视频的容器
+            videoContainer2.style.display = 'block';
+            
+            // 确保第二个视频开始播放 (虽然有autoplay，但这样做更保险)
+            video2.play();
+        });
+    }
 
 </script>
 <script>
