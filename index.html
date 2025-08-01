@@ -154,19 +154,6 @@
 </div>
 <script src="./static/echarts.min.js"></script>
 <script src="./static/index2.js"></script>
-<script>
-            // 1. 获取需要操作的HTML元素
-            const videoContainer = document.getElementById('video-container');
-            const heartVideo = document.getElementById('heart-video');
-            const imageContainer = document.getElementById('image-container');
 
-            // 2. 为视频元素添加 'ended' 事件监听器
-            //    'ended' 事件会在视频播放完毕时自动触发
-            heartVideo.addEventListener('ended', () => {
-                // 3. 视频结束后执行的操作
-                videoContainer.style.display = 'none'; // 隐藏视频容器
-                imageContainer.style.display = 'block'; // 显示图片容器
-            });
-        </script>
 </body>
 </html>
