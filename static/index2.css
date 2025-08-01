@@ -282,3 +282,22 @@ li {
     -webkit-text-fill-color: transparent;
     font-family: '汉仪铸字超然体';
 }
+
+/* --- 右侧栏仪表盘样式 (更新为网格布局) --- */
+.gauge-grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3列，每列等宽 */
+    grid-template-rows: repeat(2, auto);    /* 2行，高度自动 */
+    gap: 5px 15px; /* 行间距5px，列间距15px */
+    padding-top: 10px;
+}
+
+.gauge-item {
+    text-align: center;
+}
+
+.gauge-title {
+    color: #a2d7ff;
+    font-size: 14px;
+    margin-top: -10px;
+}

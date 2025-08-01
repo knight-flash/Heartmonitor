@@ -102,47 +102,33 @@
         </div>
         <div class="right_box">
             <div class="right_title">
-                <img src="./static/title.png" alt="" />各小组贡献度最佳名单
+                <img src="./static/title.png" alt="">核心心电指标
             </div>
-            <div class="two_echarts">
-                <div id="pie1" _echarts_instance_="ec_1703317818764" style="-webkit-tap-highlight-color: transparent; user-select: none; position: relative;">
-                    <div style="position: relative; overflow: hidden; width: 145px; height: 181px; padding: 0px; margin: 0px; border-width: 0px; cursor: default;">
-                        <canvas data-zr-dom-id="zr_0" width="145" height="181" style="position: absolute; left: 0px; top: 0px; width: 145px; height: 181px; user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); padding: 0px; margin: 0px; border-width: 0px;"></canvas>
-                    </div>
-                    <div style="position: absolute; display: none; border-style: solid; white-space: nowrap; z-index: 9999999; transition: left 0.4s cubic-bezier(0.23, 1, 0.32, 1) 0s, top 0.4s cubic-bezier(0.23, 1, 0.32, 1) 0s; background-color: rgba(50, 50, 50, 0.7); border-width: 0px; border-color: rgb(51, 51, 51); border-radius: 4px; color: rgb(255, 255, 255); font: 14px / 21px &quot;Microsoft YaHei&quot;; padding: 5px; left: 23px; top: -151px; pointer-events: none;">
-                        <span style="display:inline-block;margin-right:5px;border-radius:10px;width:10px;height:10px;background-color:#00ffff;"></span>洪英妹: 10
-                    </div>
+            <div class="gauge-grid-container">
+                <div class="gauge-item">
+                    <div id="gauge_1" style="width: 100%; height: 120px;"></div>
+                    <div class="gauge-title">心率 (bpm)</div>
                 </div>
-                <div id="pie2" _echarts_instance_="ec_1703317818765" style="-webkit-tap-highlight-color: transparent; user-select: none; position: relative;">
-                    <div style="position: relative; overflow: hidden; width: 145px; height: 181px; padding: 0px; margin: 0px; border-width: 0px;">
-                        <canvas data-zr-dom-id="zr_0" width="145" height="181" style="position: absolute; left: 0px; top: 0px; width: 145px; height: 181px; user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); padding: 0px; margin: 0px; border-width: 0px;"></canvas>
-                    </div>
-                    <div></div>
+                <div class="gauge-item">
+                    <div id="gauge_2" style="width: 100%; height: 120px;"></div>
+                    <div class="gauge-title">PR 间期 (ms)</div>
                 </div>
-                <div id="pie3" _echarts_instance_="ec_1703317818766" style="-webkit-tap-highlight-color: transparent; user-select: none; position: relative;">
-                    <div style="position: relative; overflow: hidden; width: 145px; height: 181px; padding: 0px; margin: 0px; border-width: 0px;">
-                        <canvas data-zr-dom-id="zr_0" width="145" height="181" style="position: absolute; left: 0px; top: 0px; width: 145px; height: 181px; user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); padding: 0px; margin: 0px; border-width: 0px;"></canvas>
-                    </div>
-                    <div></div>
+                <div class="gauge-item">
+                    <div id="gauge_3" style="width: 100%; height: 120px;"></div>
+                    <div class="gauge-title">QRS 波群 (ms)</div>
                 </div>
-                <div id="pie4" _echarts_instance_="ec_1703317818767" style="-webkit-tap-highlight-color: transparent; user-select: none; position: relative;">
-                    <div style="position: relative; overflow: hidden; width: 145px; height: 181px; padding: 0px; margin: 0px; border-width: 0px;">
-                        <canvas data-zr-dom-id="zr_0" width="145" height="181" style="position: absolute; left: 0px; top: 0px; width: 145px; height: 181px; user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); padding: 0px; margin: 0px; border-width: 0px;"></canvas>
-                    </div>
-                    <div></div>
+                <div class="gauge-item">
+                    <div id="gauge_4" style="width: 100%; height: 120px;"></div>
+                    <div class="gauge-title">QT 间期 (ms)</div>
                 </div>
-            </div>
-        </div>
-        <div class="right_box">
-            <div class="right_title">
-                <img src="./static/title.png" alt="" />个人成绩增值排名前五
-            </div>
-            <div id="three_echarts" _echarts_instance_="ec_1703317818768" style="-webkit-tap-highlight-color: transparent; user-select: none; position: relative;">
-                <div style="position: relative; overflow: hidden; width: 579px; height: 181px; padding: 0px; margin: 0px; border-width: 0px;">
-                    <canvas data-zr-dom-id="zr_0" width="579" height="181" style="position: absolute; left: 0px; top: 0px; width: 579px; height: 181px; user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); padding: 0px; margin: 0px; border-width: 0px;"></canvas>
-                    <canvas data-zr-dom-id="zr_1" width="579" height="181" style="position: absolute; left: 0px; top: 0px; width: 579px; height: 181px; user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); padding: 0px; margin: 0px; border-width: 0px;"></canvas>
+                <div class="gauge-item">
+                    <div id="gauge_5" style="width: 100%; height: 120px;"></div>
+                    <div class="gauge-title">P 电轴 (°)</div>
                 </div>
-                <div></div>
+                <div class="gauge-item">
+                    <div id="gauge_6" style="width: 100%; height: 120px;"></div>
+                    <div class="gauge-title">T 电轴 (°)</div>
+                </div>
             </div>
         </div>
     </div>
@@ -253,6 +239,54 @@ setInterval(function () {
         series: [{ data: ecgData }]
     });
 }, 200);
+
+// --- 右下角：初始化6个心电特征仪表盘 ---
+
+// 1. 定义一个可复用的函数来生成仪表盘配置
+function getGaugeOption(value, title, unit, min, max, color) {
+    return {
+        series: [{
+            type: 'gauge',
+            min: min,
+            max: max,
+            splitNumber: 4,
+            progress: { show: true, width: 12, itemStyle: { color: color } },
+            axisLine: { lineStyle: { width: 12, color: [[1, 'rgba(255,255,255,0.1)']] } },
+            axisTick: { show: false },
+            splitLine: { show: false },
+            axisLabel: { show: false },
+            pointer: { show: false },
+            title: { show: false },
+            detail: {
+                valueAnimation: true,
+                fontSize: 20,
+                color: '#eee',
+                offsetCenter: [0, 0], // 数值居中
+                formatter: '{value}' + unit,
+            },
+            data: [{ value: value }]
+        }]
+    };
+}
+
+// 2. 初始化6个ECharts实例
+const gauge1 = echarts.init(document.getElementById('gauge_1'));
+const gauge2 = echarts.init(document.getElementById('gauge_2'));
+const gauge3 = echarts.init(document.getElementById('gauge_3'));
+const gauge4 = echarts.init(document.getElementById('gauge_4'));
+const gauge5 = echarts.init(document.getElementById('gauge_5'));
+const gauge6 = echarts.init(document.getElementById('gauge_6'));
+
+// 3. 为每个仪表盘设置不同的指标、数据和样式
+gauge1.setOption(getGaugeOption(68, '心率', '', 40, 160, '#58D68D'));
+gauge2.setOption(getGaugeOption(150, 'PR间期', '', 120, 200, '#5DADE2'));
+gauge3.setOption(getGaugeOption(90, 'QRS波群', '', 70, 120, '#F5B041'));
+gauge4.setOption(getGaugeOption(425, 'QT间期', '', 340, 440, '#E74C3C'));
+gauge5.setOption(getGaugeOption(45, 'P电轴', '°', 0, 90, '#AF7AC5'));
+gauge6.setOption(getGaugeOption(60, 'T电轴', '°', 15, 75, '#5D6D7E'));
+
+
+
 </script>
 </body>
 </html>
