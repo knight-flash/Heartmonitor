@@ -243,48 +243,71 @@ setInterval(function () {
 // --- 右下角：初始化6个心电特征仪表盘 ---
 
 // 1. 定义一个可复用的函数来生成仪表盘配置
-function getGaugeOption(value, title, unit, min, max, color) {
-    return {
-        series: [{
-            type: 'gauge',
-            min: min,
-            max: max,
-            splitNumber: 4,
-            progress: { show: true, width: 12, itemStyle: { color: color } },
-            axisLine: { lineStyle: { width: 12, color: [[1, 'rgba(255,255,255,0.1)']] } },
-            axisTick: { show: false },
-            splitLine: { show: false },
-            axisLabel: { show: false },
-            pointer: { show: false },
-            title: { show: false },
-            detail: {
-                valueAnimation: true,
-                fontSize: 20,
-                color: '#eee',
-                offsetCenter: [0, 0], // 数值居中
-                formatter: '{value}' + unit,
-            },
-            data: [{ value: value }]
-        }]
-    };
-}
+function getGaugeOption(value, title, unit, min, max, lowThreshold, highThreshold) {
+        const range = max - min;
+        // 计算颜色分段的百分比位置
+        const lowPercent = (lowThreshold - min) / range;
+        const highPercent = (highThreshold - min) / range;
 
-// 2. 初始化6个ECharts实例
-const gauge1 = echarts.init(document.getElementById('gauge_1'));
-const gauge2 = echarts.init(document.getElementById('gauge_2'));
-const gauge3 = echarts.init(document.getElementById('gauge_3'));
-const gauge4 = echarts.init(document.getElementById('gauge_4'));
-const gauge5 = echarts.init(document.getElementById('gauge_5'));
-const gauge6 = echarts.init(document.getElementById('gauge_6'));
+        return {
+            series: [{
+                type: 'gauge',
+                min: min,
+                max: max,
+                splitNumber: 5, // 刻度线数量
+                // 核心：定义三色轴线
+                axisLine: {
+                    lineStyle: {
+                        width: 15, // 轴线宽度
+                        color: [ // 根据阈值设置颜色区间
+                            [lowPercent, '#F5B041'],   // 黄色 (低)
+                            [highPercent, '#58D68D'], // 绿色 (正常)
+                            [1, '#E74C3C']             // 红色 (高)
+                        ]
+                    }
+                },
+                // 显示指针
+                pointer: {
+                    icon: 'path://M12.8,0.7l12,40.1H0.7L12.8,0.7z',
+                    length: '60%',
+                    width: 6,
+                    offsetCenter: [0, '-50%'],
+                    itemStyle: {
+                        color: 'auto' // 指针颜色会根据所在区间自动变化
+                    }
+                },
+                axisTick: { distance: -15, length: 10, lineStyle: { color: '#fff', width: 1 } }, // 刻度样式
+                splitLine: { distance: -15, length: 15, lineStyle: { color: '#fff', width: 2 } }, // 分隔线样式
+                axisLabel: { color: 'auto', distance: 25, fontSize: 10 }, // 刻度标签
+                title: { show: false },
+                detail: { // 数值显示
+                    valueAnimation: true,
+                    fontSize: 20,
+                    color: 'auto', // 数值颜色也自动变化
+                    offsetCenter: [0, '70%'],
+                    formatter: '{value}'
+                },
+                data: [{ value: value }]
+            }]
+        };
+    }
 
-// 3. 为每个仪表盘设置不同的指标、数据和样式
-gauge1.setOption(getGaugeOption(68, '心率', '', 40, 160, '#58D68D'));
-gauge2.setOption(getGaugeOption(150, 'PR间期', '', 120, 200, '#5DADE2'));
-gauge3.setOption(getGaugeOption(90, 'QRS波群', '', 70, 120, '#F5B041'));
-gauge4.setOption(getGaugeOption(425, 'QT间期', '', 340, 440, '#E74C3C'));
-gauge5.setOption(getGaugeOption(45, 'P电轴', '°', 0, 90, '#AF7AC5'));
-gauge6.setOption(getGaugeOption(60, 'T电轴', '°', 15, 75, '#5D6D7E'));
+    // 2. 初始化6个ECharts实例
+    const gauge1 = echarts.init(document.getElementById('gauge_1'));
+    const gauge2 = echarts.init(document.getElementById('gauge_2'));
+    const gauge3 = echarts.init(document.getElementById('gauge_3'));
+    const gauge4 = echarts.init(document.getElementById('gauge_4'));
+    const gauge5 = echarts.init(document.getElementById('gauge_5'));
+    const gauge6 = echarts.init(document.getElementById('gauge_6'));
 
+    // 3. 为每个仪表盘设置新的配置，并传入正常范围的阈值
+    // 参数格式: (当前值, 标题, 单位, 最小值, 最大值, 正常范围下限, 正常范围上限)
+    gauge1.setOption(getGaugeOption(68, '心率', 'bpm', 40, 160, 60, 100));
+    gauge2.setOption(getGaugeOption(150, 'PR间期', 'ms', 100, 220, 120, 200));
+    gauge3.setOption(getGaugeOption(90, 'QRS波群', 'ms', 60, 140, 70, 110));
+    gauge4.setOption(getGaugeOption(425, 'QT间期', 'ms', 300, 500, 340, 440));
+    gauge5.setOption(getGaugeOption(45, 'P电轴', '°', -30, 100, 0, 75));
+    gauge6.setOption(getGaugeOption(60, 'T电轴', '°', 0, 90, 15, 75));
 
 
 </script>
